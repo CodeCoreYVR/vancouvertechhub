@@ -8,6 +8,7 @@
 </div>
 
 <script type="text/javascript">
+
 var initialize = function() {
   handler = Gmaps.build('Google');
   handler.buildMap({ provider: { scrollwheel: false, zoomControl: true }, internal: {id: 'map'}}, function(){
@@ -24,10 +25,10 @@ google.maps.event.addDomListener(window, 'page:load', initialize);
 </script>
 
 
-<%= react_component "OrganizationsDisplay", 
-  organizations: @organizations, 
-  techStacks: @technologies, 
-  DEFAULT: Organization::DEFAULT, 
+<%= react_component "OrganizationsDisplay",
+  organizations: @organizations,
+  techStacks: @technologies,
+  DEFAULT: Organization::DEFAULT,
   LESSTHAN25: Organization::LESSTHAN25,
   LESSTHAN50: Organization::LESSTHAN50,
   GREATERTHAN50: Organization::GREATERTHAN50 %>
