@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160509020303) do
+ActiveRecord::Schema.define(version: 20160518000602) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -53,6 +53,15 @@ ActiveRecord::Schema.define(version: 20160509020303) do
     t.string   "meetup_group"
   end
 
+  create_table "news_articles", force: :cascade do |t|
+    t.string   "title"
+    t.text     "snippet"
+    t.string   "link"
+    t.string   "thumbnail"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "news_filters", force: :cascade do |t|
     t.string   "search_term"
     t.datetime "created_at",  null: false
@@ -83,11 +92,11 @@ ActiveRecord::Schema.define(version: 20160509020303) do
     t.integer  "user_id"
     t.float    "longitude"
     t.float    "latitude"
+    t.string   "logo"
     t.string   "image"
     t.string   "image2"
     t.string   "image3"
     t.string   "image4"
-    t.string   "logo"
   end
 
   add_index "organizations", ["user_id"], name: "index_organizations_on_user_id", using: :btree
