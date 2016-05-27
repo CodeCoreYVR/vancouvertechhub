@@ -13,13 +13,14 @@ class Organization < ActiveRecord::Base
   has_many :technologies, through: :organization_technologies
   has_many :organization_news, dependent: :destroy
   has_many :news_articles, through: :organization_news
+  has_many :media, dependent: :destroy
 
   # # validates :twitter, uniqueness: true
   validates_inclusion_of :published, in: [true, false]
 
   geocoded_by :address
   after_validation :geocode
-  
+
   #Search Drop Down Constants
   DEFAULT = "default"
   LESSTHAN25 = "<25"
@@ -29,9 +30,12 @@ class Organization < ActiveRecord::Base
   # Company Avatar
   mount_uploader :image, ImageUploader
   # Company Pictures
-  mount_uploader :image2, ImageUploader
-  mount_uploader :image3, ImageUploader
-  mount_uploader :image4, ImageUploader
+  # Commented this out to allow multiple images saved to database
+  # mount_uploader :image2, ImageUploader
+  # mount_uploader :image3, ImageUploader
+  # mount_uploader :image4, ImageUploader
+
+  mount_uploaders :images, ImageUploader
 
   def self.unclaimed
     joins("left join users on users.organization_id = organizations.id").where("users.id": nil)

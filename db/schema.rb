@@ -65,6 +65,15 @@ ActiveRecord::Schema.define(version: 20160526173010) do
 
   add_index "news_articles", ["published_on"], name: "index_news_articles_on_published_on", using: :btree
 
+  create_table "media", force: :cascade do |t|
+    t.string   "file_name"
+    t.integer  "organization_id"
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
+  end
+
+  add_index "media", ["organization_id"], name: "index_media_on_organization_id", using: :btree
+
   create_table "news_filters", force: :cascade do |t|
     t.string   "search_term"
     t.datetime "created_at",  null: false
@@ -110,6 +119,7 @@ ActiveRecord::Schema.define(version: 20160526173010) do
     t.string   "image3"
     t.string   "image4"
     t.string   "logo"
+    t.json     "images"
   end
 
   add_index "organizations", ["user_id"], name: "index_organizations_on_user_id", using: :btree
@@ -140,8 +150,12 @@ ActiveRecord::Schema.define(version: 20160526173010) do
 
   add_foreign_key "claim_requests", "organizations"
   add_foreign_key "claim_requests", "users"
+<<<<<<< b229864d6949398d5f51edbc8d6c3ac553bb52f5
   add_foreign_key "organization_news", "news_articles"
   add_foreign_key "organization_news", "organizations"
+=======
+  add_foreign_key "media", "organizations"
+>>>>>>> implement carrier wave image uploader for multiple images
   add_foreign_key "organization_technologies", "organizations"
   add_foreign_key "organization_technologies", "technologies"
   add_foreign_key "organizations", "users"
