@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160526173010) do
+ActiveRecord::Schema.define(version: 20160526190949) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -53,6 +53,15 @@ ActiveRecord::Schema.define(version: 20160526173010) do
     t.string   "meetup_group"
   end
 
+  create_table "media", force: :cascade do |t|
+    t.string   "file_name"
+    t.integer  "organization_id"
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
+  end
+
+  add_index "media", ["organization_id"], name: "index_media_on_organization_id", using: :btree
+
   create_table "news_articles", force: :cascade do |t|
     t.string   "title"
     t.text     "snippet"
@@ -64,15 +73,6 @@ ActiveRecord::Schema.define(version: 20160526173010) do
   end
 
   add_index "news_articles", ["published_on"], name: "index_news_articles_on_published_on", using: :btree
-
-  create_table "media", force: :cascade do |t|
-    t.string   "file_name"
-    t.integer  "organization_id"
-    t.datetime "created_at",      null: false
-    t.datetime "updated_at",      null: false
-  end
-
-  add_index "media", ["organization_id"], name: "index_media_on_organization_id", using: :btree
 
   create_table "news_filters", force: :cascade do |t|
     t.string   "search_term"
@@ -150,12 +150,9 @@ ActiveRecord::Schema.define(version: 20160526173010) do
 
   add_foreign_key "claim_requests", "organizations"
   add_foreign_key "claim_requests", "users"
-<<<<<<< b229864d6949398d5f51edbc8d6c3ac553bb52f5
+  add_foreign_key "media", "organizations"
   add_foreign_key "organization_news", "news_articles"
   add_foreign_key "organization_news", "organizations"
-=======
-  add_foreign_key "media", "organizations"
->>>>>>> implement carrier wave image uploader for multiple images
   add_foreign_key "organization_technologies", "organizations"
   add_foreign_key "organization_technologies", "technologies"
   add_foreign_key "organizations", "users"
