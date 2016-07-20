@@ -1,5 +1,9 @@
 {
   "result": {
+<<<<<<< 98ec4c48cbfedfb5ed42adccdbfb5b81b25eb413
     "covered_percent": 68.63
+=======
+    "covered_percent": 81.4
+>>>>>>> made user controller work
   }
 }
