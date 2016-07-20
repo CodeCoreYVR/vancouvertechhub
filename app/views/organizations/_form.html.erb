@@ -2,8 +2,8 @@
   <%= f.input :name, input_html: {class: "abc"}, label_html: {class: "hey"} %>
   <%= f.input :address %>
   <%= f.input :overview %>
-  <%= f.input :employee_count, :label => "Employee Count", :class => "scroll-fix" %>
-  <%= f.input :tech_team_size, :label => "Tech Team Size", :class => "scroll-fix" %>
+  <%= f.input :employee_count, {label: "Employee Count"} %>
+  <%= f.input :tech_team_size, {label: "Tech Team Size"}  %>
   <%= f.input :website %>
   <%= f.input :twitter %>
   <%#= f.input :manager %>
