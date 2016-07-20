@@ -2,6 +2,29 @@
 
 ## Google Custom Search Setup
 
+**Signing Up as a New User**
+
+- Enter in the new users first name, last name, email, password, and password confirmation
+
+- A user verification email will be sent to the new users email
+
+- Once the user has been verified, they can continue onto the site signed in
+
+- User will be redirected to home page
+
+**Signing In**
+
+- Enter existing user email and password
+
+- Will be redirected to the sites home page
+
+**Creating an Organization**
+
+- Enter the Organization name, address, description, employee count, tech count, a link for website and twitter account
+
+- Able to upload image files for your organization
+
+
 **Setting up Google API key**
 
 https://console.developers.google.com/project
