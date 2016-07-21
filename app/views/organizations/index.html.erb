@@ -16,22 +16,25 @@ var initialize = function() {
     handler.fitMapToBounds();
   });
 }
-
 google.maps.event.addDomListener(window, 'resize', initialize);
 google.maps.event.addDomListener(window, 'load', initialize);
 google.maps.event.addDomListener(window, 'page:load', initialize);
-
 </script>
 
 <!-- Tech Stacks -->
 <%= select_tag :technologies, options_for_select(@technologies.each.map{|stack| stack.name}), class: "chosen-select form-control", id: "tech-stacks", multiple: true, data: {placeholder: "Tech Stacks (Max 3)"} %>
+<div class="infinite-table">
 
-<%= react_component "OrganizationsDisplay", organizations: @organizations, techStacks: @technologies %>
+   <%= react_component "OrganizationsDisplay", organizations: @organizations, techStacks: @technologies %>
 
-<!-- Pagination for Organizations -->
-<div class="container-fluid text-center">
-  <%= paginate @organizations %>
-</div>
-<div class="container-fluid text-center">
-  <%= page_entries_info @organizations %>
+  <!-- Pagination for Organizations -->
+  <p class="pagination">
+  <!-- <div class="container-fluid text-center"> -->
+    <!-- <%#= paginate @organizations %> -->
+    <%= link_to_next_page(@organizations, 'Load More', :remote => true) %>
+ </p>
+  <!-- </div> -->
+  <!-- <div class="container-fluid text-center">
+    <%#= page_entries_info @organizations %>
+  </div> -->
 </div>

@@ -37,6 +37,7 @@ gem 'google-search'
 gem "google_custom_search_api"
 gem 'kaminari'
 gem 'kaminari-bootstrap'
+gem 'jquery-infinite-pages'
 gem "fog"
 gem 'exception_notification'
 gem 'sidekiq'

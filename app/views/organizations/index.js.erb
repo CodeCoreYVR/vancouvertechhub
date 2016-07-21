@@ -1,0 +1,14 @@
+// Append new data
+$("<%= j react_component "OrganizationsDisplay", organizations: @organizations, techStacks: @technologies %>")
+  .appendTo($(".infinite-table"));
+
+
+// Update pagination link
+<% if @organizations.last_page? %>
+  $('.pagination').html("That's all, folks!");
+<% else %>
+  $('.pagination')
+    .html("<%=j link_to_next_page(@organizations, 'Load More', :remote => true) %>");
+<% end %>
+
+ReactRailsUJS.mountComponents();

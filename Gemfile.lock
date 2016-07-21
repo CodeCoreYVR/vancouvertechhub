@@ -273,6 +273,10 @@ GEM
     jbuilder (2.4.1)
       activesupport (>= 3.0.0, < 5.1)
       multi_json (~> 1.2)
+    jquery-infinite-pages (0.2.0)
+      coffee-script
+      jquery-rails
+      railties (>= 3.1)
     jquery-rails (4.1.1)
       rails-dom-testing (>= 1, < 3)
       railties (>= 4.2.0)
@@ -477,6 +481,7 @@ DEPENDENCIES
   hirb
   interactive_editor
   jbuilder (~> 2.0)
+  jquery-infinite-pages
   jquery-rails
   jquery-turbolinks
   jquery-ui-rails
@@ -508,3 +513,6 @@ DEPENDENCIES
   underscore-rails
   virtus
   web-console (~> 2.0)
+
+BUNDLED WITH
+   1.12.5
