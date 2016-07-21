@@ -52,4 +52,5 @@ class Organization < ActiveRecord::Base
       errors.add(:tech_team_size, "Team size must be less than organization size")
     end
   end
+
 end
