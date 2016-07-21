@@ -4,7 +4,6 @@ var OrganizationsDisplay = React.createClass({
     return { organizations: this.props.organizations, searchTerm: null, techSizeSearch: null, technologySearch: null };
   },
   getTechValue: function(string){
-    // do stuff here
     var arr = string.split(",");
     var outArr = arr.join("+");
     this.setState({
@@ -46,7 +45,7 @@ var OrganizationsDisplay = React.createClass({
 
     return <div>
       <MultiSelectField sendValue={this.getTechValue} techStacks={this.props.techStacks} />
-      <input id="organization-search" type="text" className="form-control" placeholder="Search" ref="searchInput" onChange= { this.filterOrganizations } ></input>
+              <input id="organization-search" type="text" className="form-control" placeholder="Search" ref="searchInput" onChange= { this.filterOrganizations } ></input>
               <select id="team-size" className="form-control" ref="sizeInput" onChange= { this.filterOrganizations } >
                 <option value="0" defaultValue> Team Size </option>
                 <option value="1"> 25 or fewer </option>
