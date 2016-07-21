@@ -24,12 +24,15 @@ var OrganizationsDisplay = React.createClass({
 
     //this.setState({ searchTerm: termSearch });
   },
-
   // filterOrganizationTechSize: function() {
   //   var techSizeSearch = this.refs.sizeInput.value;
   //   this.setState({ techSizeSearch: techSizeSearch });
   // },
 
+  render: function() {
+  filterOrganizationTechnology: function(){
+    //code goes here
+  },
   render: function() {
     var organizations = this.state.organizations.map(function(organization, index) {
       return <Organization organization = { organization }
