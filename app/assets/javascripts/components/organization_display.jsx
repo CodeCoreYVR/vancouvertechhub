@@ -37,8 +37,8 @@ var OrganizationsDisplay = React.createClass({
     });
 
   },
-  render: function() {
-    console.log(this.state.organizations)
+   render: function() {
+    console.log(organizations)
     var organizations = this.state.organizations.map(function(organization, index) {
       return <Organization organization = { organization }
                            key = { index }
