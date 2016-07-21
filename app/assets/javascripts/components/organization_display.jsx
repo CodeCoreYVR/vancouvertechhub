@@ -7,23 +7,25 @@ var OrganizationsDisplay = React.createClass({
   filterOrganizations: function() {
     var termSearch = this.refs.searchInput.value.toLowerCase();
     var techSizeSearch = this.refs.sizeInput.value;
-    // var technologySearch = this.refs.technologyInput.value; comes in pluses
+    var technologySearch = this.refs.technologyInput.value;
+
     var url = "search/?term="+termSearch+"?size="+techSizeSearch;
 
+    console.log(url)
     $.ajax({
       url: url,
       method: "get",
       success: function(data) {
-        this.setState({organizations: data})
-        console.log(data)
+        this.setState({organizations: data.body})
       },
       error: function () {
         console.log("Error")
       }
     }.bind(this));
 
-    //this.setState({ searchTerm: termSearch });
+    this.setState({ searchTerm: termSearch });
   },
+    //this.setState({ searchTerm: termSearch });
   // filterOrganizationTechSize: function() {
   //   var techSizeSearch = this.refs.sizeInput.value;
   //   this.setState({ techSizeSearch: techSizeSearch });
