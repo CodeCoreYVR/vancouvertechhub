@@ -46,5 +46,4 @@ class SearchController < ApplicationController
       format.json { render json: @results }
     end
   end
-
 end
