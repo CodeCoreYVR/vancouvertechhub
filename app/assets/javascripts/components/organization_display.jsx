@@ -10,7 +10,6 @@ var OrganizationsDisplay = React.createClass({
       technologySearch: outArr
     }, this.filterOrganizations);
   },
-
   filterOrganizations: function() {
     var termSearch = this.refs.searchInput.value.toLowerCase();
     var techSizeSearch = this.refs.sizeInput.value;
@@ -27,16 +26,12 @@ var OrganizationsDisplay = React.createClass({
       },
       success: function(data) {
         that.setState({organizations: data})
-        this.setState({organizations: data})
-      success: function(data) {
-        that.setState({organizations: data})
       },
       error: function () {
         console.log("Error")
       }
     });
-
-  },
+   },
    render: function() {
     console.log(organizations)
     var organizations = this.state.organizations.map(function(organization, index) {
