@@ -27,7 +27,6 @@ class Organization < ActiveRecord::Base
   mount_uploader :image3, ImageUploader
   mount_uploader :image4, ImageUploader
 
-
   def self.unclaimed
     joins("left join users on users.organization_id = organizations.id").where("users.id": nil)
   end
