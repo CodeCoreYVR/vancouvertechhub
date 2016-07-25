@@ -13,7 +13,8 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 
 gem "puma"
 
-gem "meetup_client", github: 'yeeie201/meetup_client'
+gem "meetup_client" #github: 'yeeie201/meetup_client'
+#the 'yeeie201' repo was not parsing JSON
 
 gem "simple_calendar", "~> 2.0"
 

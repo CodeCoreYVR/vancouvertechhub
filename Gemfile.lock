@@ -14,12 +14,6 @@ GIT
     faker (1.6.3)
       i18n (~> 0.5)
 
-GIT
-  remote: git://github.com/yeeie201/meetup_client.git
-  revision: 2297af2cc5897466706f4f46ea446b3f952d003b
-  specs:
-    meetup_client (0.0.8)
-
 GEM
   remote: https://rubygems.org/
   specs:
@@ -301,6 +295,7 @@ GEM
       nokogiri (>= 1.5.9)
     mail (2.6.4)
       mime-types (>= 1.16, < 4)
+    meetup_client (0.1.0)
     method_source (0.8.2)
     mime-types (3.0)
       mime-types-data (~> 3.2015)
@@ -488,7 +483,7 @@ DEPENDENCIES
   kaminari
   kaminari-bootstrap
   letter_opener
-  meetup_client!
+  meetup_client
   mini_magick
   pg (~> 0.15)
   pry
