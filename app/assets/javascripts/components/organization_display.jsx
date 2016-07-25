@@ -28,14 +28,17 @@ var OrganizationsDisplay = React.createClass({
       success: function(data) {
         that.setState({organizations: data})
         this.setState({organizations: data})
+      success: function(data) {
+        that.setState({organizations: data})
       },
       error: function () {
         console.log("Error")
       }
-    }.bind(this));
+    });
 
   },
   render: function() {
+    console.log(this.state.organizations)
     var organizations = this.state.organizations.map(function(organization, index) {
       return <Organization organization = { organization }
                            key = { index }
