@@ -11,10 +11,8 @@
     <%= f.input :published, as: :boolean, checked_value: true, unchecked_value: false %>
   <% end %>
   <%= f.association :technologies, input_html: {class: "chosen-select"} %>
-  <%= f.input :remote_logo_url, {label: "Upload Logo URL"} %>
-  <label>Or Upload Logo Image File</label>
-  <%= f.file_field :logo %>
-  <%= f.check_box :remove_logo %> Remove Logo<br><br>
+  <label>Upload Organization Logo</label>
+  <%= f.file_field :logo %><br>
   <label>Add Your Organization's Photos</label>
   <%= f.file_field :image %>
   <%= f.file_field :image2 %>
