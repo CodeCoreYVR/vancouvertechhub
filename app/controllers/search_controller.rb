@@ -32,18 +32,8 @@ class SearchController < ApplicationController
       end
       techs.flatten!
     end
-    if params[:size]
-      if params[:size] == "1"
-        size = Organization.where(tech_team_size: 1..25)
-      elsif params[:size] == "2"
-        size = Organization.where(tech_team_size: 26..50)
-      elsif params[:size] == "3"
-        size = Organization.where('tech_team_size > ?', 50)
-      else
-        size = Organization.all
-      end
-    end
 
+    
     # Elements are nil if no search was executed in the respective category
     # This then gets the intersection of non-nil search results
     @results = [term, size, techs].keep_if{|x| x}.reduce(:&)
@@ -56,6 +46,5 @@ class SearchController < ApplicationController
       format.json { render json: @results }
     end
   end
-
 
 end
