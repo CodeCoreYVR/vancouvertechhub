@@ -508,3 +508,6 @@ DEPENDENCIES
   underscore-rails
   virtus
   web-console (~> 2.0)
+
+BUNDLED WITH
+   1.12.5
