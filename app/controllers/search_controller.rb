@@ -23,6 +23,21 @@ class SearchController < ApplicationController
         @results.concat(Organization.where(id: o))
       end
     end
+<<<<<<< 39cfde3b0563a8e9d76ca45f40ceb8bbe4487935
+=======
+    if params[:tech] != ""
+      tech = []
+      # This gets the ids of the specified techs
+      techs = params[:tech].split(' ').map{|x| x.to_i}
+      org_ids = OrganizationTechnology.where(technology_id: techs).pluck('organization_id').uniq
+      org_ids.each do |o|
+        tech << (Organization.where(id: o))
+      end
+    else
+      tech = Organization.all
+    end
+    @results = term & size & tech
+>>>>>>> TechStacks drop down functionality working version
     respond_to do |format|
       format.html { render json: @results }
       format.json { render json: @results }
