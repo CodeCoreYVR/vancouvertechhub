@@ -2,7 +2,6 @@ class SearchController < ApplicationController
 
    # The organization_display.jsx react component sends an ajax request with the appropriate parameters
   def search
-    @results = []
     if params[:term]
       @results.concat(Organization.where('name ILIKE ? OR overview ILIKE ?', "%#{params[:term]}%", "%#{params[:term]}%"))
     end
@@ -15,16 +14,6 @@ class SearchController < ApplicationController
         @results.concat(Organization.where('tech_team_size > ?', 50))
       end
     end
-    if params[:tech]
-      # This gets the ids of the specified techs
-      techs = params[:tech].split(' ').map{|x| x.to_i}
-      org_ids = OrganizationTechnology.where(technology_id: techs).pluck('organization_id').uniq
-      org_ids.each do |o|
-        @results.concat(Organization.where(id: o))
-      end
-    end
-<<<<<<< 39cfde3b0563a8e9d76ca45f40ceb8bbe4487935
-=======
     if params[:tech] != ""
       tech = []
       # This gets the ids of the specified techs
@@ -37,7 +26,6 @@ class SearchController < ApplicationController
       tech = Organization.all
     end
     @results = term & size & tech
->>>>>>> TechStacks drop down functionality working version
     respond_to do |format|
       format.html { render json: @results }
       format.json { render json: @results }
