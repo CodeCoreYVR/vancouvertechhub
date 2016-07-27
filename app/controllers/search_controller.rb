@@ -35,6 +35,7 @@ class SearchController < ApplicationController
     # Elements are nil if no search was executed in the respective category
     # This then gets the intersection of non-nil search results
     @results = [term, size, techs].keep_if{|x| x}.reduce(:&)
+
     respond_to do |format|
       format.html { render json: @results }
       format.json { render json: @results }

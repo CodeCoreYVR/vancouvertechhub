@@ -16,7 +16,6 @@ var OrganizationsDisplay = React.createClass({
     var techSizeSearch = this.refs.sizeInput.value;
     var url = "search/";
     var that = this;
-    console.log(url)
     $.ajax({
       url: url,
       method: "get",
@@ -36,12 +35,7 @@ var OrganizationsDisplay = React.createClass({
 
     this.setState({ searchTerm: termSearch });
   },
-    //this.setState({ searchTerm: termSearch });
-  // filterOrganizationTechSize: function() {
-  //   var techSizeSearch = this.refs.sizeInput.value;
-  //   this.setState({ techSizeSearch: techSizeSearch });
-  // },
-
+  
   render: function() {
     var organizations = this.state.organizations.map(function(organization, index) {
       return <Organization organization = { organization }
