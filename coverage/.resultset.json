@@ -1,6 +1,7 @@
 {
   "RSpec": {
     "coverage": {
+<<<<<<< 1408de41ffba93a441469325053a4928883b4169
 <<<<<<< 98ec4c48cbfedfb5ed42adccdbfb5b81b25eb413
       "/Users/weiyi2017/codecorelab/vancouvertechhub1/app/controllers/events_controller.rb": [
         1,
@@ -22,12 +23,17 @@
         0,
         0,
         null,
+=======
+      "/Users/weiyi2017/codecorelab/vancouvertechhub1/app/controllers/events_controller.rb": [
+        1,
+>>>>>>> add rspec test for meetup crawl job
         null,
         1,
         0,
         0,
         0,
         null,
+<<<<<<< 1408de41ffba93a441469325053a4928883b4169
 >>>>>>> made user controller work
         null,
         1,
@@ -140,15 +146,25 @@
         1,
 >>>>>>> made user controller work
         1,
+=======
+        0,
+        null,
+        null,
+        null,
+        1,
+>>>>>>> add rspec test for meetup crawl job
         1,
         null,
         null,
         1,
         0,
+<<<<<<< 1408de41ffba93a441469325053a4928883b4169
 <<<<<<< 98ec4c48cbfedfb5ed42adccdbfb5b81b25eb413
 =======
         null,
 >>>>>>> made user controller work
+=======
+>>>>>>> add rspec test for meetup crawl job
         0,
         0,
         null,
@@ -157,7 +173,10 @@
         null,
         null,
         1,
+<<<<<<< 1408de41ffba93a441469325053a4928883b4169
 <<<<<<< 98ec4c48cbfedfb5ed42adccdbfb5b81b25eb413
+=======
+>>>>>>> add rspec test for meetup crawl job
         null,
         1,
         0,
@@ -169,6 +188,7 @@
         null,
         null,
         1,
+<<<<<<< 1408de41ffba93a441469325053a4928883b4169
 =======
         0,
         0,
@@ -246,12 +266,27 @@
         1,
         0,
 <<<<<<< 98ec4c48cbfedfb5ed42adccdbfb5b81b25eb413
+=======
+        null,
+        1,
+        0,
+        null,
+        0,
+        null,
+        0,
+        null,
+        null,
+        null,
+        1,
+        0,
+>>>>>>> add rspec test for meetup crawl job
         null,
         1,
         null,
         1,
         0,
         null,
+<<<<<<< 1408de41ffba93a441469325053a4928883b4169
 =======
         0,
         0,
@@ -280,6 +315,17 @@
         0,
         null,
 <<<<<<< 98ec4c48cbfedfb5ed42adccdbfb5b81b25eb413
+=======
+        1,
+        null,
+        1,
+        0,
+        null,
+        null,
+        1,
+        0,
+        null,
+>>>>>>> add rspec test for meetup crawl job
         null,
         1,
         null,
@@ -312,6 +358,7 @@
         101,
         null,
         null,
+<<<<<<< 1408de41ffba93a441469325053a4928883b4169
 =======
         null
       ],
@@ -1976,14 +2023,20 @@
         null,
         1,
 >>>>>>> made user controller work
+=======
+>>>>>>> add rspec test for meetup crawl job
         null,
         null
       ]
     },
+<<<<<<< 1408de41ffba93a441469325053a4928883b4169
 <<<<<<< 98ec4c48cbfedfb5ed42adccdbfb5b81b25eb413
     "timestamp": 1469640466
 =======
     "timestamp": 1469035570
 >>>>>>> made user controller work
+=======
+    "timestamp": 1469640466
+>>>>>>> add rspec test for meetup crawl job
   }
 }

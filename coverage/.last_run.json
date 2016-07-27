@@ -1,9 +1,13 @@
 {
   "result": {
+<<<<<<< 1408de41ffba93a441469325053a4928883b4169
 <<<<<<< 98ec4c48cbfedfb5ed42adccdbfb5b81b25eb413
     "covered_percent": 68.63
 =======
     "covered_percent": 81.4
 >>>>>>> made user controller work
+=======
+    "covered_percent": 68.63
+>>>>>>> add rspec test for meetup crawl job
   }
 }
