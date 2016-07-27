@@ -1,4 +1,3 @@
-
 // react-select component
 var MultiSelectField = React.createClass({
 	displayName: 'MultiSelectField',
@@ -28,3 +27,4 @@ var MultiSelectField = React.createClass({
 		);
 	}
 });
+
