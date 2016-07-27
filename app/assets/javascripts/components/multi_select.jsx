@@ -27,4 +27,3 @@ var MultiSelectField = React.createClass({
 		);
 	}
 });
-
