@@ -41,9 +41,7 @@ gem "fog"
 gem 'exception_notification'
 gem 'sidekiq'
 gem 'react-rails'
-
 gem "virtus"
-
 gem 'simplecov', require: false, group: :test
 
 group :development, :test do
@@ -59,6 +57,8 @@ group :development, :test do
   gem 'cowsay'
   gem 'rails-erd'
   gem 'byebug'
+  gem 'webmock'
+  gem 'vcr'
 end
 
 group :development do
