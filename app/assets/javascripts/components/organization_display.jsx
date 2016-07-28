@@ -29,7 +29,7 @@ var OrganizationsDisplay = React.createClass({
               </select>
               <br />
               <br />
-              <div class="container text-center">
+              <div class="container text-center" id="organization-display">
                 <div class="row">
                   { organizations }
                 </div>
