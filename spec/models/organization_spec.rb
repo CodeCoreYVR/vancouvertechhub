@@ -26,6 +26,16 @@ RSpec.describe Organization, type: :model do
     it "should have employees" do
       o = Organization.new FactoryGirl.attributes_for(:organization).merge({employee_count: 0})
       expect(o).to be_invalid
+    it "requires the employee count to be greater than or equal to 1" do
+      o = Organization.new employee_count: 5
+      o.valid?
+      expect(o.errors).to have_key(:employee_count)
+    end
+
+    it "requires the tech team size to be greater than or equal to 0" do
+      o = Organization.new tech_team_size: 5
+      o.valid?
+      expect(o.errors).to have_key(:tech_team_size)
     end
   end
 end
