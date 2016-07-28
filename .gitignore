@@ -21,4 +21,4 @@
 /.byebug_history
 /dump.rdb
 .DS_Store
-/spec/models/vcr/global.yml
+/spec/vcr/global.yml
