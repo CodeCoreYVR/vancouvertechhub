@@ -7,18 +7,16 @@ class DailyMeetupCrawlJob < ActiveJob::Base
     @meet = meetup_api.method_request('self/calendar', {})
 
     @meet.each do |list|
-        if list["venue"]
-          url = list["link"]
-          address = list["venue"]["name"] + ", " + list["venue"]["address_1"] + ", " + list["venue"]["city"]
-          title = list["name"]
-          time = Time.at(list["time"]/1000).strftime("%Y-%m-%d %I:%M:%S")
-          event = Event.new
-          event.meetup_title = title
-          event.start_time = time
-          event.meetup_url = url
-          event.location = address
-          event.save
-        end
+      url = list["link"]
+      address = list["venue"]["name"] + ", " + list["venue"]["address_1"] + ", " + list["venue"]["city"]
+      title = list["name"]
+      time = Time.at(list["time"]/1000).strftime("%Y-%m-%d %I:%M:%S")
+      event = Event.new
+      event.meetup_title = title
+      event.start_time = time
+      event.meetup_url = url
+      event.location = address
+      event.save
     end
   end
 end
