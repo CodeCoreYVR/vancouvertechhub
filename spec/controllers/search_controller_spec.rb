@@ -5,7 +5,10 @@ RSpec.describe SearchController, type: :controller do
   describe '#search' do
     
     context "filter search results based on search queries" do
-      it "returns the correct results for a 1 query search"
+     
+      it "returns the correct results for a 1 query search" do 
+        
+      end
       it "returns the correct results for a 2 query search"
       it "returns the correct results for a 3 query search"
     end
