@@ -2,7 +2,7 @@ class OrganizationsController < ApplicationController
   before_action :authenticate_user!, except: [:index, :show, :filter]
   before_action :find_organization, only: [:show, :edit, :update, :destroy]
 
-  ORGANIZATIONS_PER_PAGE = 18
+  ORGANIZATIONS_PER_PAGE = 16
 
   def new
     if current_user.organization.present?
@@ -28,6 +28,10 @@ class OrganizationsController < ApplicationController
       @organizations = Organization.page(params[:page]).per(ORGANIZATIONS_PER_PAGE)
     else
       @organizations = Organization.published.page(params[:page]).per(ORGANIZATIONS_PER_PAGE)
+    end
+    respond_to do |format|
+      format.html
+      format.json {render json: @organizations}
     end
   end
 

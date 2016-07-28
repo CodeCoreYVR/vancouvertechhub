@@ -1,23 +1,42 @@
 var OrganizationsDisplay = React.createClass({
   getInitialState: function() {
-    return { searchTerm: null, techSizeSearch: null, techStacks: null };
+
+    return { organizations: [], currentPage: 1, searchTerm: null, techSizeSearch: null, techStacks: null };
   },
+
+  componentDidMount: function() {
+    var organizations = this.props.organizations.map(function(organization) {
+      return <Organization organization = { organization }
+                           key = { organization.id } />
+    }.bind(this));
+    this.setState({organizations: organizations});
+    console.log("App Component is mounted");
+  },
+
   filterOrganizations: function() {
     var searchTerm = this.refs.searchInput.value.toLowerCase();
     this.setState({ searchTerm: searchTerm });
   },
-  filterOrganizationTechSize: function() {
-    var techSizeSearch = this.refs.sizeInput.value;
-    this.setState({ techSizeSearch: techSizeSearch });
-  },
-  render: function() {
-    var organizations = this.props.organizations.map(function(organization, index) {
-      return <Organization organization = { organization }
-                           key = { index }
-                           searchTerm = { this.state.searchTerm }
-                           techSizeSearch = { this.state.techSizeSearch }/>
-    }.bind(this));
+  loadMore: function() {
+    var newPage = (this.state.currentPage + 1);
+      $.ajax({
+        url: "http://localhost:3000/organizations.json?page=" + newPage,
+        method: "GET",
+        error: function() {
+          alert("Can't load more questions");
+        },
+        success: function(data) {
+          console.log(data)
+          var newElements = data.map(function(organization) {
+            return <Organization organization = { organization }
+                                 key = { organization.id }/>
+          });
+          this.setState({organizations: this.state.organizations.concat(newElements), currentPage: newPage})
+        }.bind(this)
+      });
+    },
 
+   render: function() {
     return <div>
               <input id="organization-search" type="text" className="form-control" placeholder="Search" ref="searchInput" onChange= { this.filterOrganizations } ></input>
 
@@ -28,9 +47,10 @@ var OrganizationsDisplay = React.createClass({
                 <option value="3"> 50 or more </option>
               </select>
               <br />
-              <div class="container-fluid text-center">
-                <div class="row">
-                  { organizations }
+              <div className="clearfix"></div>
+              <div className="container-fluid text-center">
+                <div className="row">
+                  { this.state.organizations }
                 </div>
               </div>
               <br />
