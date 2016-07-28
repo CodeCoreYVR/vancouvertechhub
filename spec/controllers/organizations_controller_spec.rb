@@ -56,6 +56,9 @@ RSpec.describe OrganizationsController, type: :controller do
     end
 
     describe "as common user" do
+      let (:published_organization) {FactoryGirl.create(:published_organization, address: "142 W Hastings St, Vancouver")}
+      let (:event) {FactoryGirl.create(:event, location: "142 W Hastings St, Vancouver")}
+
       before { login(user) }
       it "doesn't display unpublished organizations" do
         expect { get :show, id: unpublished_organization.id }.to raise_exception(ActiveRecord::RecordNotFound)
@@ -64,6 +67,12 @@ RSpec.describe OrganizationsController, type: :controller do
       it "displays published organizations show page" do
         get :show, id: published_organization.id
         expect(assigns(:organization)).to eq(published_organization)
+      end
+
+      it "display meetup events hosted by published organization" do
+        event
+        get :show, id: published_organization.id
+        expect(subject.send(:hosted_events)).to include event
       end
     end
 
@@ -80,7 +89,7 @@ RSpec.describe OrganizationsController, type: :controller do
       end
     end
 
-    
+
   end
 
   describe "#index" do

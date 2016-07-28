@@ -3,6 +3,6 @@ FactoryGirl.define do
     meetup_title "MyString"
     meetup_url "MyString"
     location "MyString"
-    time 1
+    start_time Time.now + 10.days
   end
 end
