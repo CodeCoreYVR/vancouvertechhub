@@ -79,6 +79,8 @@ RSpec.describe OrganizationsController, type: :controller do
         expect(assigns(:organization)).to eq(published_organization)
       end
     end
+
+    
   end
 
   describe "#index" do
@@ -101,7 +103,7 @@ RSpec.describe OrganizationsController, type: :controller do
         get :index
         expect(assigns(:organizations)).to include(unpublished_organization)
       end
-      
+
       it "does display published organizations on index" do
         get :index
         expect(assigns(:organizations)).to include(published_organization)

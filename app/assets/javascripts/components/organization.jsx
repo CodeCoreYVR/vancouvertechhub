@@ -5,7 +5,7 @@ var Organization = React.createClass({
     );
   },
   teamSizeMatched: function() {
-    var sizeInput = this.props.sizeInput;
+    var sizeInput = this.props.techSizeSearch;
     var techTeamSize = this.props.organization.tech_team_size;
 
     return (

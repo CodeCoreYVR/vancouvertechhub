@@ -31,6 +31,7 @@ var OrganizationsDisplay = React.createClass({
               <div class="container-fluid text-center">
                 <div class="row">
                   { organizations }
+                  { console.log(organizations) }
                 </div>
               </div>
               <br />
