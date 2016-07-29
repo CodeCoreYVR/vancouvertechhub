@@ -1,7 +1,7 @@
 class SearchController < ApplicationController
 
   # The organization_display.jsx react component sends an ajax request with the appropriate parameters
-  
+
   def search
     unless params[:term].empty?
       term = Organization.published.where('name ILIKE ? OR overview ILIKE ?', "%#{params[:term]}%", "%#{params[:term]}%").flatten
@@ -37,10 +37,14 @@ class SearchController < ApplicationController
     # Elements are nil if no search was executed in the respective category
     # This then gets the intersection of non-nil search results
     @results = [term, size, techs].keep_if{|x| x}.reduce(:&)
+<<<<<<< 6de242482a2acaafc8eb11c812f140b261e1148f
    
+=======
+
+>>>>>>> initiated testing
     # When deleting search options the search controller still receives an ajax request with no queries, hence the line below
     @results = Organization.all if @results.nil?
-    
+
     respond_to do |format|
       format.html { render json: @results }
       format.json { render json: @results }
