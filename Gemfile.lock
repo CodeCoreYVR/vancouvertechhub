@@ -527,6 +527,8 @@ DEPENDENCIES
   vcr
   virtus
   web-console (~> 2.0)
+  webmock
+
 
 =======
   webmock
