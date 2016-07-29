@@ -50,6 +50,8 @@ group :development, :test do
   gem 'cowsay'
   gem 'rails-erd'
   gem 'byebug'
+  gem 'webmock'
+  gem 'vcr'
 end
 
 group :development do
