@@ -33,7 +33,8 @@ RSpec.describe SearchController, type: :controller do
     end
     context "with a 3 query search" do
       it "returns the correct result for query term 'test', size '1', tech '1'" do
-        get :search, { term: "test", size: "1", tech: "1" }
+        tech_id = Technology.find_by_name("tech1")
+        get :search, { term: "test", size: "1", tech: tech_id }
         expect(response.body).to eq([organization_1].to_json)
       end
     end
