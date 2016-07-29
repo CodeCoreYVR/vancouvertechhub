@@ -6,9 +6,9 @@ RSpec.describe SearchController, type: :controller do
     context "filter search results based on search queries" do
       let (:tech2) { FactoryGirl.create(:technology, name: 'tech2')}
       let (:techs) { [FactoryGirl.create(:technology, name: 'tech1'), tech2]}
-      let! (:organization_1) {FactoryGirl.create(:published_organization, name: "test organization", tech_team_size: 10, technologies: techs)}
-      let (:techs2) { [FactoryGirl.create(:technology, name: 'tech3'), tech2] }
-      let! (:organization_2) {FactoryGirl.create(:published_organization, name: "yyyo", tech_team_size: 40)}
+      let (:techs2) { [FactoryGirl.create(:technology, name: 'tech3'), tech2] }      
+      let! (:organization_1) {FactoryGirl.create(:published_organization, name: "test organization", tech_team_size: 10, employee_count: 20, technologies: techs)}
+      let! (:organization_2) {FactoryGirl.create(:published_organization, name: "yyyo", tech_team_size: 40, employee_count: 50, technologies: techs2)}
 
       context "with a one query search" do
         it "returns the correct results for query term 'test', size '0' (default)" do
@@ -22,13 +22,15 @@ RSpec.describe SearchController, type: :controller do
         end
 
         it "returns the correct results for query size '0' (default), tech '1'"  do
-          get :search, { term: "", size: "0", tech: "1" }
+          tech_id = Technology.find_by_name("tech1")
+          get :search, { term: "", size: "0", tech: tech_id }
           expect(response.body).to eq([organization_1].to_json)
         end
         
         it "returns the correct results for query size '0' (default), tech '2'" do
-          get :search, { term: "", size: "0", tech: "2" }          
-          expect(response.body).to eq([organization_2].to_json)
+          tech_id = Technology.find_by_name("tech2")
+          get :search, { term: "", size: "0", tech: tech_id }          
+          expect(response.body).to eq([organization_1, organization_2].to_json)
         end
       end
       
