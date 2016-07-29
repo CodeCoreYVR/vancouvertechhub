@@ -41,10 +41,10 @@ var OrganizationsDisplay = React.createClass({
               <MultiSelectField sendValue={this.getTechValue} techStacks={this.props.techStacks} />
               <input id="organization-search" type="text" className="form-control" placeholder="Search" ref="searchInput" onChange= { this.filterOrganizations } ></input>
               <select id="team-size" className="form-control" ref="sizeInput" onChange= { this.filterOrganizations } >
-                <option value="0" defaultValue> Team Size </option>
-                <option value="1"> 25 or fewer </option>
-                <option value="2"> 26 - 50 </option>
-                <option value="3"> more than 50 </option>
+                <option value={this.props.DEFAULT} defaultValue> Team Size </option>
+                <option value={this.props.LESSTHAN25}> 25 or fewer </option>
+                <option value={this.props.LESSTHAN50}> 26 - 50 </option>
+                <option value={this.props.GREATERTHAN50}> more than 50 </option>
               </select>
               <div className="clearfix"></div>
               <div className="container-fluid text-center organization-container">

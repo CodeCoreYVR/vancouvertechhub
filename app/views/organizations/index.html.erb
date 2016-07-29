@@ -24,7 +24,13 @@ google.maps.event.addDomListener(window, 'page:load', initialize);
 </script>
 
 
-<%= react_component "OrganizationsDisplay", organizations: @organizations, techStacks: @technologies %>
+<%= react_component "OrganizationsDisplay", 
+  organizations: @organizations, 
+  techStacks: @technologies, 
+  DEFAULT: Organization::DEFAULT, 
+  LESSTHAN25: Organization::LESSTHAN25,
+  LESSTHAN50: Organization::LESSTHAN50,
+  GREATERTHAN50: Organization::GREATERTHAN50 %>
 
 <!-- Pagination for Organizations -->
 <div class="container-fluid text-center">

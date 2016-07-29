@@ -19,6 +19,12 @@ class Organization < ActiveRecord::Base
 
   geocoded_by :address
   after_validation :geocode
+  
+  #Search Drop Down Constants
+  DEFAULT = "default"
+  LESSTHAN25 = "<25"
+  LESSTHAN50 = "<50"
+  GREATERTHAN50 = ">50"
 
   # Company Avatar
   mount_uploader :image, ImageUploader
