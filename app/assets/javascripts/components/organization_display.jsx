@@ -28,12 +28,13 @@ var OrganizationsDisplay = React.createClass({
                 <option value="3"> 50 or more </option>
               </select>
               <br />
-              <div class="container-fluid text-center">
+              <br />
+              <div class="container text-center" id="organization-display">
                 <div class="row">
                   { organizations }
                 </div>
               </div>
               <br />
-            </div>;
+            </div>
   }
 });
