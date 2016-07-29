@@ -3,14 +3,12 @@ require 'rails_helper'
 RSpec.describe SearchController, type: :controller do
 
   describe '#search' do
-    context "filter search results based on search queries" do
-      let (:tech2) { FactoryGirl.create(:technology, name: 'tech2')}
-      let (:techs) { [FactoryGirl.create(:technology, name: 'tech1'), tech2]}
-      let (:techs2) { [FactoryGirl.create(:technology, name: 'tech3'), tech2] }
-      let! (:organization_1) {FactoryGirl.create(:published_organization, name: "test organization", tech_team_size: 10, employee_count: 20, technologies: techs)}
-      let! (:organization_2) {FactoryGirl.create(:published_organization, name: "yyyo", tech_team_size: 40, employee_count: 50, technologies: techs2)}
+      let(:tech2) { FactoryGirl.create(:technology, name: 'tech2') }
+      let(:techs) { [FactoryGirl.create(:technology, name: 'tech1'), tech2] }
+      let(:techs2) { [FactoryGirl.create(:technology, name: 'tech3'), tech2] }      
+      let!(:organization_1) { FactoryGirl.create(:fixed_address_published_organization, name: "test organization", tech_team_size: 10, employee_count: 20, technologies: techs) }
+      let!(:organization_2) { FactoryGirl.create(:fixed_address_published_organization, name: "yyyo", tech_team_size: 40, employee_count: 50, technologies: techs2) }
 
-     
 
     context "with a one query search" do
       it "returns the correct results for query term 'test', size '0' (default)" do
@@ -39,6 +37,15 @@ RSpec.describe SearchController, type: :controller do
         expect(response.body).to eq([organization_1].to_json)
       end
     end
+
+      context "with a two query search" do
+        it "returns the correct result for query size '1', tech '2'" do
+          tech_id = Technology.find_by_name("tech2")
+          get :search, { term: "", size: "1", tech: tech_id }
+          expect(response.body).to eq([organization_1].to_json)
+        end
+      end
+      
     context "do not filter search results when the ajax request sends no queries" do
       it "returns all organizations for a request with no queries" do
         orgs = Organization.all
@@ -50,9 +57,6 @@ RSpec.describe SearchController, type: :controller do
 
   end
 
-    # context "do not filter search results when the ajax request sends no queries" do
-    #   it "returns all organizations for a request with no queries"
-    # end
     
   end
 end
