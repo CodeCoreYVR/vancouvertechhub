@@ -10,7 +10,6 @@ var OrganizationsDisplay = React.createClass({
                            key = { organization.id } />
     }.bind(this));
     this.setState({organizations: organizations});
-    console.log("App Component is mounted");
   },
 
   filterOrganizations: function() {
@@ -26,7 +25,6 @@ var OrganizationsDisplay = React.createClass({
           alert("Can't load more questions");
         },
         success: function(data) {
-          console.log(data)
           var newElements = data.map(function(organization) {
             return <Organization organization = { organization }
                                  key = { organization.id }/>
