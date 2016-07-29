@@ -45,6 +45,12 @@ RSpec.describe SearchController, type: :controller do
           get :search, { term: "", size: "1", tech: tech_id }
           expect(response.body).to eq([organization_1].to_json)
         end
+
+        it "returns the correct result for query size '2', tech '3'" do
+          tech_id = Technology.find_by_name("tech3")
+          get :search, { term: "", size: "2", tech: tech_id }
+          expect(response.body).to eq([organization_2].to_json)
+        end
       end
       
     context "do not filter search results when the ajax request sends no queries" do
