@@ -21,6 +21,9 @@
 //= require gmaps/google
 //= require react
 //= require react_ujs
+//= require classnames
+//= require react-input-autosize
+//= require react-select
 //= require components
 //= require_tree .
 //
