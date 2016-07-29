@@ -1,5 +1,4 @@
 var OrganizationsDisplay = React.createClass({
-
   getInitialState: function() {
     return { organizations: this.props.organizations, searchTerm: null, techSizeSearch: null, technologySearch: null };
   },
