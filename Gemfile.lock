@@ -530,8 +530,5 @@ DEPENDENCIES
   webmock
 
 
-=======
-  webmock
-
 BUNDLED WITH
    1.12.5
