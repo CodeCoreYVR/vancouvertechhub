@@ -32,6 +32,7 @@ var OrganizationsDisplay = React.createClass({
                 <div class="row">
                   { organizations }
                 </div>
+                <a href="javascript:void(0);" onClick={this.loadMore}>Load more...</a>
               </div>
               <br />
             </div>;

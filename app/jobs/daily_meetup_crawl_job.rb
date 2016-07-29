@@ -7,7 +7,6 @@ class DailyMeetupCrawlJob < ActiveJob::Base
     @meet = meetup_api.method_request('self/calendar', {})
 
     @meet.each do |list|
-      if list["venue"]
       url = list["link"]
       address = list["venue"]["name"] + ", " + list["venue"]["address_1"] + ", " + list["venue"]["city"]
       title = list["name"]
@@ -19,7 +18,5 @@ class DailyMeetupCrawlJob < ActiveJob::Base
       event.location = address
       event.save
     end
-  end
-
   end
 end
