@@ -1,6 +1,6 @@
 var OrganizationsDisplay = React.createClass({
   getInitialState: function() {
-    return { organizations: this.props.organizations, searchTerm: null, techSizeSearch: null, technologySearch: null };
+    return { organizations: this.props.organizations, technologySearch: null };
   },
   getTechValue: function(string){
     var arr = string.split(",");
@@ -34,13 +34,11 @@ var OrganizationsDisplay = React.createClass({
    render: function() {
     var organizations = this.state.organizations.map(function(organization, index) {
       return <Organization organization = { organization }
-                           key = { index }
-                           searchTerm = { this.state.searchTerm }
-                           techSizeSearch = { this.state.techSizeSearch }/>
+                           key = { index }/>
     }.bind(this));
 
     return <div>
-      <MultiSelectField sendValue={this.getTechValue} techStacks={this.props.techStacks} />
+              <MultiSelectField sendValue={this.getTechValue} techStacks={this.props.techStacks} />
               <input id="organization-search" type="text" className="form-control" placeholder="Search" ref="searchInput" onChange= { this.filterOrganizations } ></input>
               <select id="team-size" className="form-control" ref="sizeInput" onChange= { this.filterOrganizations } >
                 <option value="0" defaultValue> Team Size </option>

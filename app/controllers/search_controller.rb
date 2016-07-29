@@ -1,4 +1,10 @@
 class SearchController < ApplicationController
+  
+  LESSTHAN25 = 1
+  LESSTHAN50 = 2
+  GREATERTHAN50 = 3
+  
+  # The organization_display.jsx react component sends an ajax request with the appropriate parameters
   def search
     unless params[:term].empty?
       term = Organization.published.where('name ILIKE ? OR overview ILIKE ?', "%#{params[:term]}%", "%#{params[:term]}%").flatten
@@ -11,11 +17,11 @@ class SearchController < ApplicationController
     
     if params[:size] == "0"
       size = nil
-    elsif params[:size] == "1"
+    elsif params[:size] == LESSTHAN25
       size = Organization.published.where(tech_team_size: 1..25)
-    elsif params[:size] == "2"
+    elsif params[:size] == LESSTHAN50
       size = Organization.published.where(tech_team_size: 26..50)
-    elsif params[:size] == "3"
+    elsif params[:size] == GREATERTHAN50
       size = Organization.published.where('tech_team_size > ?', 50)
     else
       flash[:alert] = "Invalid search!"
