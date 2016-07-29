@@ -54,7 +54,6 @@ var OrganizationsDisplay = React.createClass({
                   { organizations }
                 </div>
               </div>
-              <br />
           </div>;
   }
 });
