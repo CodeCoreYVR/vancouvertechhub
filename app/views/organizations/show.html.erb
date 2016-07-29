@@ -9,11 +9,11 @@
 
 
   <!-- Company "Avatar" -->
-  <%# if @organization.image.present? %>
+  <% if @organization.image.present? %>
     <%= image_tag @organization.image.url(:large) %>
-  <%# end %>
+  <% end %>
 
-    <!-- Company Images -->
+  <!-- Company Images -->
   <% if @organization.image2.present? %>
     <%= image_tag @organization.image2.url(:small) %>
   <% end %>
