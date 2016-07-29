@@ -1,8 +1,8 @@
 class SearchController < ApplicationController
   
-  LESSTHAN25 = 1
-  LESSTHAN50 = 2
-  GREATERTHAN50 = 3
+  LESSTHAN25 = "1"
+  LESSTHAN50 = "2"
+  GREATERTHAN50 = "3"
   
   # The organization_display.jsx react component sends an ajax request with the appropriate parameters
   def search
@@ -10,9 +10,6 @@ class SearchController < ApplicationController
       term = Organization.published.where('name ILIKE ? OR overview ILIKE ?', "%#{params[:term]}%", "%#{params[:term]}%").flatten
     else
       term = nil
-    @results = []
-    if params[:term]
-      @results.concat(Organization.where('name ILIKE ? OR overview ILIKE ?', "%#{params[:term]}%", "%#{params[:term]}%"))
     end
     
     if params[:size] == "0"
