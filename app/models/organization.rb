@@ -53,6 +53,15 @@ class Organization < ActiveRecord::Base
     end
   end
 
+  def self.tech_search(tech)
+    techs = tech.split('+').map{|x| x.to_i}
+    org_ids = OrganizationTechnology.where(technology_id: techs).pluck('organization_id').uniq
+    org_ids.each do |o|
+      techs.concat(Organization.published.where(id: o))
+    end
+    techs.flatten!
+  end
+
   def reasonable_tech_team_size
     unless tech_team_size <= employee_count
       errors.add(:tech_team_size, "Team size must be less than organization size")

@@ -1,103 +1,53 @@
 {
   "RSpec": {
     "coverage": {
-<<<<<<< c9787af53983bb62728ecd9b2a7ff5de824fd5c1
-      "/Users/Kots/codecore/cohortproject/vancouvertechhub/app/controllers/search_controller.rb": [
-=======
-      "/home/dessm/codecore/vancouvertechhub/app/controllers/search_controller.rb": [
->>>>>>> cherry pick lost commit
-        1,
-        null,
-        null,
-        null,
-        1,
-<<<<<<< c9787af53983bb62728ecd9b2a7ff5de824fd5c1
-        1,
-        0,
-        null,
-        1,
-        null,
-        null,
-        1,
-        1,
-        null,
-        0,
-=======
-        4,
-        1,
-        null,
-        3,
-        null,
-        null,
-        4,
-        3,
-        null,
-        1,
->>>>>>> cherry pick lost commit
-        null,
-        0,
-        null,
-        0,
-        null,
-        0,
-        null,
-        null,
-<<<<<<< c9787af53983bb62728ecd9b2a7ff5de824fd5c1
-        1,
-        0,
-        null,
-        0,
-        0,
-        0,
-        0,
-        0,
-        null,
-        0,
-        null,
-        null,
-        null,
-        null,
-        4,
-        null,
-        null,
+      "/Users/Wstanley/Dropbox/development/codecore/vancouvertechhub/app/controllers/search_controller.rb": [
         1,
         null,
         1,
-        2,
-        1,
-=======
-        4,
+        8,
         2,
         null,
-        4,
-        2,
-        2,
-        2,
-        0,
-        null,
-        2,
+        6,
         null,
         null,
-        null,
-        null,
-        16,
-        null,
-        null,
-        4,
-        4,
         8,
         4,
->>>>>>> cherry pick lost commit
+        null,
+        3,
+        null,
+        1,
+        null,
+        0,
+        null,
+        0,
         null,
         null,
+        8,
+        5,
+        null,
+        10,
+        5,
+        5,
+        5,
+        7,
+        null,
+        5,
+        null,
+        null,
+        null,
+        null,
+        null,
+        32,
+        null,
+        null,
+        8,
+        null,
+        8,
         null,
         null
       ],
-<<<<<<< c9787af53983bb62728ecd9b2a7ff5de824fd5c1
-      "/Users/Kots/codecore/cohortproject/vancouvertechhub/app/controllers/application_controller.rb": [
-=======
-      "/home/dessm/codecore/vancouvertechhub/app/controllers/application_controller.rb": [
->>>>>>> cherry pick lost commit
+      "/Users/Wstanley/Dropbox/development/codecore/vancouvertechhub/app/controllers/application_controller.rb": [
         1,
         null,
         null,
@@ -133,31 +83,25 @@
         1,
         null,
         null
-<<<<<<< c9787af53983bb62728ecd9b2a7ff5de824fd5c1
+      ],
+      "/Users/Wstanley/Dropbox/development/codecore/vancouvertechhub/app/models/technology.rb": [
+        1,
+        1,
+        1,
+        null,
+        1,
+        null
+      ],
+      "/Users/Wstanley/Dropbox/development/codecore/vancouvertechhub/app/models/organization_technology.rb": [
+        1,
+        1,
+        1,
+        null,
+        1,
+        null,
+        null
       ]
     },
-    "timestamp": 1469733235
-=======
-      ],
-      "/home/dessm/codecore/vancouvertechhub/app/models/technology.rb": [
-        1,
-        1,
-        1,
-        null,
-        1,
-        null
-      ],
-      "/home/dessm/codecore/vancouvertechhub/app/models/organization_technology.rb": [
-        1,
-        1,
-        1,
-        null,
-        1,
-        null,
-        null
-      ]
-    },
-    "timestamp": 1469733503
->>>>>>> cherry pick lost commit
+    "timestamp": 1469838631
   }
 }

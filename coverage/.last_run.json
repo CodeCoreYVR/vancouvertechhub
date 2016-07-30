@@ -1,9 +1,5 @@
 {
   "result": {
-<<<<<<< c9787af53983bb62728ecd9b2a7ff5de824fd5c1
-    "covered_percent": 53.66
-=======
-    "covered_percent": 77.55
->>>>>>> cherry pick lost commit
+    "covered_percent": 80.85
   }
 }
