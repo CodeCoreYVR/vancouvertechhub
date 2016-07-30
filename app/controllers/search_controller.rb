@@ -20,10 +20,15 @@ class SearchController < ApplicationController
     end
 
     unless params[:tech].empty?
-      techs = Organization.tech_search(params[:tech])
+      techs = params[:tech].split('+').map{|x| x.to_i}
+      org_ids = OrganizationTechnology.where(technology_id: techs).pluck('organization_id').uniq
+      techs = []
+      org_ids.each do |o|
+        techs.concat(Organization.published.where(id: o))
+      end
+      techs.flatten!
     end
 
-    
     # Elements are nil if no search was executed in the respective category
     # This then gets the intersection of non-nil search results
     @results = [term, size, techs].keep_if{|x| x}.reduce(:&)
