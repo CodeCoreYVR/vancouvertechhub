@@ -20,15 +20,7 @@ class SearchController < ApplicationController
     end
 
     unless params[:tech].empty?
-      techs = []
-      # This gets the ids of the specified techs
-      techs = params[:tech].split('+').map{|x| x.to_i}
-      org_ids = OrganizationTechnology.where(technology_id: techs).pluck('organization_id').uniq
-      techs = []
-      org_ids.each do |o|
-        techs.concat(Organization.published.where(id: o))
-      end
-      techs.flatten!
+      techs = Organization.tech_search(params[:tech])
     end
 
     

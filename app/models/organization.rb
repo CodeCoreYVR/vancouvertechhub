@@ -60,6 +60,7 @@ class Organization < ActiveRecord::Base
       techs.concat(Organization.published.where(id: o))
     end
     techs.flatten!
+    #orgs = Organization.published.joins(:organizations_technologies).where(technology_id: params[:tech].split('+').map(&:to_i))
   end
 
   def reasonable_tech_team_size
