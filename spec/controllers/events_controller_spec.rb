@@ -8,7 +8,6 @@ RSpec.describe EventsController, type: :controller do
     end
 
     it "crawls for new meet up events using task job" do
-      Event.destroy_all
       count_before = Event.count
       DailyMeetupCrawlJob.perform_now
       count_after  = Event.count
