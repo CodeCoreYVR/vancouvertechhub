@@ -115,7 +115,7 @@
   <div class="row sidebar-upcoming-events">
     <div class="col-xs-12">
       <h2>Upcoming Events</h2>
-      <% @find.each do |list| %>
+      <% hosted_events.each do |list| %>
         <p>
           <div class="event-name">
             <%= link_to list.meetup_title, list.meetup_url %>
