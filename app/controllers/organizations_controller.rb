@@ -71,6 +71,7 @@ class OrganizationsController < ApplicationController
       else
         redirect_to @organization, notice: "Organization Created!"
       end
+      redirect_to organization_path(@organization), notice: "Organization Created!"
     else
       flash[:alert] = "organization didn't save!"
       render :new
@@ -88,7 +89,7 @@ class OrganizationsController < ApplicationController
   end
 
   def organization_params
-    params.require(:organization).permit([:name, :address, :overview, :employee_count, :tech_team_size, :website, :twitter, :logo, :published, :image, :image2, :image3, :image4, :user_id, {technology_ids: []} ])
+    params.require(:organization).permit([:name, :address, :overview, :employee_count, :tech_team_size, :website, :twitter, :logo, :published, :user_id, {technology_ids: []}, {images:[]} ])
   end
 
   def authorize_organization

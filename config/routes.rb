@@ -14,6 +14,7 @@ Rails.application.routes.draw do
 
   resources :organizations do
     resources :claim_requests
+    resources :media_contents, only: [:create]
   end
 
   # ajax action for organization filter on directory page

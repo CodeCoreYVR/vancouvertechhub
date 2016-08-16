@@ -25,6 +25,8 @@
 //= require react-input-autosize
 //= require react-select
 //= require components
+//= require dropzone
+//= require cocoon
 //= require_tree .
 //
 
