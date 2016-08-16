@@ -1,4 +1,5 @@
 class TechnologiesController < ApplicationController
+  
   def create
     @technology = Technology.new(technology_params)
     if @technology.save

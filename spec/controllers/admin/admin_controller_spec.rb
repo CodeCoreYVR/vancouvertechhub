@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe AdminController, type: :controller do
+RSpec.describe Admin::AdminController, type: :controller do
 
   describe "#organizations" do
     context "non-signed-in users" do

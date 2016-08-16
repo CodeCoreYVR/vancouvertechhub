@@ -19,6 +19,12 @@ class Organization < ActiveRecord::Base
 
   geocoded_by :address
   after_validation :geocode
+  
+  #Search Drop Down Constants
+  DEFAULT = "default"
+  LESSTHAN25 = "<25"
+  LESSTHAN50 = "<50"
+  GREATERTHAN50 = ">50"
 
   # Company Avatar
   mount_uploader :image, ImageUploader
@@ -26,7 +32,6 @@ class Organization < ActiveRecord::Base
   mount_uploader :image2, ImageUploader
   mount_uploader :image3, ImageUploader
   mount_uploader :image4, ImageUploader
-
 
   def self.unclaimed
     joins("left join users on users.organization_id = organizations.id").where("users.id": nil)
@@ -49,8 +54,9 @@ class Organization < ActiveRecord::Base
   end
 
   def reasonable_tech_team_size
-    unless tech_team_size < employee_count
+    unless tech_team_size <= employee_count
       errors.add(:tech_team_size, "Team size must be less than organization size")
     end
   end
+
 end

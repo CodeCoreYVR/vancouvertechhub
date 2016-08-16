@@ -1,39 +1,57 @@
 var OrganizationsDisplay = React.createClass({
   getInitialState: function() {
-    return { searchTerm: null, techSizeSearch: null, techStacks: null };
+    return { organizations: this.props.organizations, technologySearch: null };
+  },
+  getTechValue: function(string){
+    var arr = string.split(",");
+    var outArr = arr.join("+");
+    this.setState({
+      technologySearch: outArr
+    }, this.filterOrganizations);
   },
   filterOrganizations: function() {
-    var searchTerm = this.refs.searchInput.value.toLowerCase();
-    this.setState({ searchTerm: searchTerm });
-  },
-  filterOrganizationTechSize: function() {
+    var termSearch = this.refs.searchInput.value.toLowerCase();
     var techSizeSearch = this.refs.sizeInput.value;
-    this.setState({ techSizeSearch: techSizeSearch });
-  },
-  render: function() {
-    var organizations = this.props.organizations.map(function(organization, index) {
+    var url = "search/";
+    var that = this;
+    $.ajax({
+      url: url,
+      method: "get",
+      dataType: 'json',
+      data: {
+        term: termSearch,
+        size: techSizeSearch,
+        tech: this.state.technologySearch
+      },
+      success: function(data) {
+        that.setState({organizations: data})
+      },
+      error: function () {
+        console.log("Error")
+      }
+    });
+   },
+   render: function() {
+    var organizations = this.state.organizations.map(function(organization, index) {
       return <Organization organization = { organization }
-                           key = { index }
-                           searchTerm = { this.state.searchTerm }
-                           techSizeSearch = { this.state.techSizeSearch }/>
+                           key = { index }/>
     }.bind(this));
 
     return <div>
+              <MultiSelectField sendValue={this.getTechValue} techStacks={this.props.techStacks} />
               <input id="organization-search" type="text" className="form-control" placeholder="Search" ref="searchInput" onChange= { this.filterOrganizations } ></input>
-
-              <select id="team-size" className="form-control" ref="sizeInput" onChange= { this.filterOrganizationTechSize } >
-                <option value="0" defaultValue> Team Size </option>
-                <option value="1"> 25 or less </option>
-                <option value="2"> 26 - 50 </option>
-                <option value="3"> 50 or more </option>
+              <select id="team-size" className="form-control" ref="sizeInput" onChange= { this.filterOrganizations } >
+                <option value={this.props.DEFAULT} defaultValue> Team Size </option>
+                <option value={this.props.LESSTHAN25}> 25 or fewer </option>
+                <option value={this.props.LESSTHAN50}> 26 - 50 </option>
+                <option value={this.props.GREATERTHAN50}> more than 50 </option>
               </select>
-              <br />
-              <div class="container-fluid text-center">
-                <div class="row">
+              <div className="clearfix"></div>
+              <div className="container-fluid text-center organization-container">
+                <div className="row">
                   { organizations }
                 </div>
               </div>
-              <br />
-            </div>;
+          </div>;
   }
 });

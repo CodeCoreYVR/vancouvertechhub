@@ -23,29 +23,37 @@ Rails.application.routes.draw do
   get "/news/search_news" => "news#search_news"
   resources :news_filters, only: [:create, :destroy]
 
-  resources :technologies
+  # resources :technologies, only: [:create, :destroy]
 
 
   resources :events
 
   get "/about"                => "home#about"
 
-  get "/admin/organizations"  => "admin#organizations",
-                              as: :admin_organizations
 
-  get "/admin/events"         => "admin#events",
-                              as: :admin_events
+  namespace :admin do
+    get "/organizations"  => "admin#organizations"
 
-  get "/admin/users"          => "admin#users",
-                              as: :admin_users
+    resources :organizations do
+      resources :claim_requests
+    end
 
-  post "/admin/users"         => "admin#users"
+    get "/events"         => "admin#events"
 
-  get "/admin/technologies"   => "admin#technologies",
-                              as: :admin_technologies
-  get "/admin/news_filters"   => "admin#news_filters",
-                              as: :admin_news_filters
+    get "/users"          => "admin#users"
 
+    get "/news_filters"   => "admin#news_filters"
+
+    resources :users, only: [:new, :create, :edit, :update, :destroy]
+
+    get "/technologies"   => "admin#technologies"
+
+    resources :technologies, only: [:create, :destroy]
+
+  end
 
   root "organizations#index"
+
+  # Search route
+  get '/search' => "search#search"
 end
