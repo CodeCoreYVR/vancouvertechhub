@@ -23,10 +23,14 @@ google.maps.event.addDomListener(window, 'page:load', initialize);
 
 </script>
 
-<!-- Tech Stacks -->
-<%= select_tag :technologies, options_for_select(@technologies.each.map{|stack| stack.name}), class: "chosen-select form-control", id: "tech-stacks", multiple: true, data: {placeholder: "Tech Stacks (Max 3)"} %>
 
-<%= react_component "OrganizationsDisplay", organizations: @organizations, techStacks: @technologies %>
+<%= react_component "OrganizationsDisplay", 
+  organizations: @organizations, 
+  techStacks: @technologies, 
+  DEFAULT: Organization::DEFAULT, 
+  LESSTHAN25: Organization::LESSTHAN25,
+  LESSTHAN50: Organization::LESSTHAN50,
+  GREATERTHAN50: Organization::GREATERTHAN50 %>
 
 <!-- Pagination for Organizations -->
 <div class="container-fluid text-center">

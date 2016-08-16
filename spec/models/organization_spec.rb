@@ -1,11 +1,6 @@
 require 'rails_helper'
 
 RSpec.describe Organization, type: :model do
-<<<<<<< HEAD
-<<<<<<< 855850fb33300992fce36376a9e198c137acf71f
-=======
-
->>>>>>> d25bc0322ecd2152dd8a31204064216114909296
   describe "validations" do
     it "should have reasonable tech team size" do
       o = Organization.new FactoryGirl.attributes_for(:organization).merge({tech_team_size: 1000})
