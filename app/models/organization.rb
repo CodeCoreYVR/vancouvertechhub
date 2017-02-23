@@ -27,8 +27,9 @@ class Organization < ActiveRecord::Base
   GREATERTHAN50 = ">50"
 
   # Company Avatar
-  mount_uploader :image, ImageUploader
+  mount_uploader :logo, ImageUploader
   # Company Pictures
+  mount_uploader :image, ImageUploader
   mount_uploader :image2, ImageUploader
   mount_uploader :image3, ImageUploader
   mount_uploader :image4, ImageUploader
