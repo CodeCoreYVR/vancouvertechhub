@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160526173010) do
+ActiveRecord::Schema.define(version: 20160725165721) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -102,7 +102,6 @@ ActiveRecord::Schema.define(version: 20160526173010) do
     t.boolean  "published",      default: false
     t.datetime "created_at",                     null: false
     t.datetime "updated_at",                     null: false
-    t.integer  "user_id"
     t.float    "longitude"
     t.float    "latitude"
     t.string   "image"
@@ -111,8 +110,6 @@ ActiveRecord::Schema.define(version: 20160526173010) do
     t.string   "image4"
     t.string   "logo"
   end
-
-  add_index "organizations", ["user_id"], name: "index_organizations_on_user_id", using: :btree
 
   create_table "technologies", force: :cascade do |t|
     t.string   "name"
@@ -144,6 +141,5 @@ ActiveRecord::Schema.define(version: 20160526173010) do
   add_foreign_key "organization_news", "organizations"
   add_foreign_key "organization_technologies", "organizations"
   add_foreign_key "organization_technologies", "technologies"
-  add_foreign_key "organizations", "users"
   add_foreign_key "users", "organizations"
 end

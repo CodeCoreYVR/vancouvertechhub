@@ -3,8 +3,8 @@ require 'pry'
 
 RSpec.describe UsersController, type: :controller do
   let (:admin_user) { FactoryGirl.create(:admin) }
-  let (:user) { FactoryGirl.create(:user) }
   let (:organization) { FactoryGirl.create(:organization) }
+  let (:user) { FactoryGirl.create(:user) }
   describe "#new" do
     it "renders the new template" do
       get :new
@@ -23,6 +23,12 @@ RSpec.describe UsersController, type: :controller do
         post :create, user: FactoryGirl.attributes_for(:user)
       end
 
+      it "user should be assigned one organization_id" do
+          user.organization = organization
+          user.save
+          expect(user.organization_id).to be(organization.id)
+      end
+
       it "creates a record in the database" do
           count_before = User.count
           valid_request
@@ -30,8 +36,6 @@ RSpec.describe UsersController, type: :controller do
           expect(count_after).to eq(count_before + 1)
       end
 
-      # monkey-patched test mailer to call deliver_now
-      # in spec/support/message_delivery.rb
       it "sends an account verification e-mail" do
         expect { valid_request }.to change{ActionMailer::Base.deliveries.count}.by(1)
       end
@@ -64,19 +68,19 @@ RSpec.describe UsersController, type: :controller do
         expect(response).to render_template(:new)
       end
     end
-
   end
 
 
   describe "#edit" do
     render_views
     describe "as a mortal" do
-    before { login(user) }
+      before { login(user) }
       it "doesn't show the option make the user an admin" do
         get :edit, id: user.id
         expect(response.body).not_to include("Admin")
       end
     end
+
     describe "as an admin" do
     before { login(admin_user) }
       it "shows the option to make the user an admin" do
@@ -87,28 +91,32 @@ RSpec.describe UsersController, type: :controller do
   end
 
   describe "#update" do
-
     describe "as a mortal" do
       before do
         login(user)
       end
+
       it "cannot update status to admin" do
         patch :update, id: user.id, user: {admin: true}
         expect(user.reload.admin).to eq(false)
       end
+
       it "cannot add organizations to users" do
         patch :update, id: user.id, user: {organization_id: organization.id}
         expect(user.reload.organization).not_to eq(organization)
       end
     end
+
     describe "as administrators" do
       before do
         login(admin_user)
       end
+
       it "can make more administrators" do
         patch :update, id: user.id, user: {admin: true}
         expect(user.reload.admin).to eq(true)
       end
+
       it "can add organizations to users" do
         patch :update, id: user.id, user: {organization_id: organization.id}
         expect(user.reload.organization).to eq(organization)
